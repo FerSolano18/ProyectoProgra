@@ -1,0 +1,57 @@
+import csv
+
+#clase terapeutas
+class terapeuta_disponible:
+    def __init__(self, terapeuta, dia, horario, sede, especialidad):
+        self.terapeuta = terapeuta
+        self.dia = dia
+        self.horario = horario
+        self.sede = sede
+        self.especialidad = especialidad
+
+#clase pacientes
+class pacientes:
+    def _init_(self, nombre, apellidos, cedula, telefono, correo, direccion, terapeuta, razon, notas):
+        self.nombre
+        self.nombre
+        self.apellidos
+        self.cedula
+        self.telefono
+        self.correo
+        self.direccion
+        self.terapeuta
+        self.razon
+        self.notas
+
+#clase clinica
+class clinica:
+    def _init_(self):
+        self.terapeuta_dispobible = {}
+        self.pacientes = {}
+
+    def guardar_terapeutas (self):
+        with open('informacion.csv', mode='w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(['Terapeuta', 'Día', 'Horario', 'Sede', 'Especialidad'])
+            for terapeuta in self.terapeuta_dispobible.values():
+                writer.writerow([terapeuta.dia, terapeuta.horario, terapeuta.sede, terapeuta.especialidad])
+
+    def guardar_pacientes (self):
+        with open('pacientes.csv', mode='w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow(['Nombre', 'Apellidos', 'Cédula', 'Teléfono', 'Correo', 'Dirección', 'Terapeua', 'Consulta', 'Notas'])
+
+    def ver_terapeutas (self):
+        with open('informacion.csv', mode='r', newline='') as file:
+            reader = csv.reader(file)
+            reader.readrow(['Terapeuta', 'Día', 'Horario', 'Sede', 'Especialidad'])
+            for terapeuta in self.terapeuta_dispobible.values():
+                reader.readrow(['terapeuta.dia, terapeuta.horario, terapeuta.sede, terapeuta.especialidad'])
+
+    def ver_pacientes (self):
+        with open('pacientes.csv', mode='r', newline='') as file:
+            reader = csv.reader(file)
+            reader.readrow(['Nombre', 'Apellidos', 'Cédula', 'Teléfono', 'Correo', 'Dirección', 'Terapeua', 'Consulta', 'Notas'])
+            for terapeuta in self.terapeuta_dispobible.values():
+                reader.readrow(['Nombre', 'Apellidos', 'Cédula', 'Teléfono', 'Correo', 'Dirección', 'Terapeua', 'Consulta', 'Notas'])
+    
