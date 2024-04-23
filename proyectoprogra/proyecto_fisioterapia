@@ -55,3 +55,34 @@ class clinica:
             for terapeuta in self.terapeuta_dispobible.values():
                 reader.readrow(['Nombre', 'Apellidos', 'Cédula', 'Teléfono', 'Correo', 'Dirección', 'Terapeua', 'Consulta', 'Notas'])
     
+while True:
+    print("Escoja el tipo de acceso mediante la selección del número correcto")
+    print("1 - Acceso de Servicio al Cliente")
+    print("2 - Acceso de Terapeuta")
+    acceso = int(input("Seleccione el tipo de acceso: "))
+
+    if acceso == 1:
+        print("Que desea hacer?")
+        print("1- Ver la disponibilidad")
+        print("2 - Agregar disponibilidad")
+        opcion = int(input("Seleccione la opción que describe cómo desea proceder: "))
+        if opcion == 1:
+            Clinica.ver_terapeutas()
+        elif opcion == 2:
+            Clinica.guardar_terapeutas()
+
+    elif acceso == 2:
+        print("Que desea hacer?")
+        print("1 - Ver paciente")
+        print("2 - Agregar información de paciente")
+        opcion2 = int(input("Seleccione la opción que describe cómo desea proseguir: "))
+        if opcion2 == 1:
+            Clinica.ver_pacientes()
+        elif opcion2 == 2:
+            Clinica.guardar_pacientes()
+            break
+        else:
+            print("La aplicación se ha cerrado")
+
+# Creación de instancia de la clase Clinica
+clinica = Clinica()
