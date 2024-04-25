@@ -23,37 +23,51 @@ class pacientes:
         self.razon
         self.notas
 
-#clase clinica
-class clinica:
-    def _init_(self):
-        self.terapeuta_dispobible = {}
+# clase clinica
+class Clinica:
+    def __init__(self):
+        self.terapeutas_disponibles = {}
         self.pacientes = {}
 
-    def guardar_terapeutas (self):
-        with open('informacion.csv', mode='w', newline='') as file:
+    def guardar_terapeutas(self):
+        with open('informacion.csv', mode='a', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(['Terapeuta', 'Día', 'Horario', 'Sede', 'Especialidad'])
-            for terapeuta in self.terapeuta_dispobible.values():
-                writer.writerow([terapeuta.dia, terapeuta.horario, terapeuta.sede, terapeuta.especialidad])
+            for terapeuta in self.terapeutas_disponibles.values():
+                writer.writerow([terapeuta.terapeuta, terapeuta.dia, terapeuta.horario, terapeuta.sede, terapeuta.especialidad])
 
-    def guardar_pacientes (self):
-        with open('pacientes.csv', mode='w', newline='') as file:
+    def guardar_pacientes(self):
+        Nombre = input("Ingrese el nombre del paciente: ")
+        Apellidos = input("Ingrese los apellidos del paciente: ")
+        Cedula = input("Ingrese la cédula del paciente: ")
+        Telefono = input("Ingrese el teléfono del paciente: ")
+        Correo = input("Ingrese el correo del paciente: ")
+        Direccion = input("Ingrese la dirección del paciente: ")
+        Terapeuta = input("Ingrese el terapeuta del paciente: ")
+        Consulta = input("Ingrese el tipo de consulta del paciente: ")
+        Notas = input("Ingrese las notas del paciente: ")
+
+        with open('pacientes.csv', mode='a', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow(['Nombre', 'Apellidos', 'Cédula', 'Teléfono', 'Correo', 'Dirección', 'Terapeua', 'Consulta', 'Notas'])
+            writer.writerow([Nombre, Apellidos, Cedula, Telefono, Correo, Direccion, Terapeuta, Consulta, Notas])
 
-    def ver_terapeutas (self):
-        with open('informacion.csv', mode='r', newline='') as file:
+        print("Datos ingresados correctamente.")
+
+
+    def ver_terapeutas(self):
+        with open('informacion.csv', mode='r') as file:
             reader = csv.reader(file)
-            reader.readrow(['Terapeuta', 'Día', 'Horario', 'Sede', 'Especialidad'])
-            for terapeuta in self.terapeuta_dispobible.values():
-                reader.readrow(['terapeuta.dia, terapeuta.horario, terapeuta.sede, terapeuta.especialidad'])
+            for row in reader:
+                print(row)
 
-    def ver_pacientes (self):
+    def ver_pacientes(self):
         with open('pacientes.csv', mode='r', newline='') as file:
             reader = csv.reader(file)
-            reader.readrow(['Nombre', 'Apellidos', 'Cédula', 'Teléfono', 'Correo', 'Dirección', 'Terapeua', 'Consulta', 'Notas'])
-            for terapeuta in self.terapeuta_dispobible.values():
-                reader.readrow(['Nombre', 'Apellidos', 'Cédula', 'Teléfono', 'Correo', 'Dirección', 'Terapeua', 'Consulta', 'Notas'])
+            next(reader)
+            for row in reader:
+                print(row)
+
+clinica = Clinica() 
     
 while True:
     print("Escoja el tipo de acceso mediante la selección del número correcto")
@@ -67,9 +81,9 @@ while True:
         print("2 - Agregar disponibilidad")
         opcion = int(input("Seleccione la opción que describe cómo desea proceder: "))
         if opcion == 1:
-            Clinica.ver_terapeutas()
+            clinica.ver_terapeutas()
         elif opcion == 2:
-            Clinica.guardar_terapeutas()
+            clinica.guardar_terapeutas()
 
     elif acceso == 2:
         print("Que desea hacer?")
@@ -77,12 +91,10 @@ while True:
         print("2 - Agregar información de paciente")
         opcion2 = int(input("Seleccione la opción que describe cómo desea proseguir: "))
         if opcion2 == 1:
-            Clinica.ver_pacientes()
+            clinica.ver_pacientes()
         elif opcion2 == 2:
-            Clinica.guardar_pacientes()
+            clinica.guardar_pacientes()
             break
         else:
             print("La aplicación se ha cerrado")
 
-# Creación de instancia de la clase Clinica
-clinica = Clinica()
