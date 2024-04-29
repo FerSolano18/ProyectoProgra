@@ -107,7 +107,9 @@ while True:
                 'Especialidad': especialidad,
                 'Tarifa': tarifa
             }
-            clinica.terapeutas_disponibles = clinica.terapeutas_disponibles.append(nuevo_terapeuta, ignore_index=True)
+
+            clinica.terapeutas_disponibles = pd.concat([clinica.terapeutas_disponibles, pd.DataFrame([nuevo_terapeuta])], ignore_index=True)
+
 
             clinica.guardar_terapeutas()
         elif opcion == 3:
