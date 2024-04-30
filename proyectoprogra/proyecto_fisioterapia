@@ -58,11 +58,13 @@ class Clinica:
         print("Datos de paciente ingresados correctamente.")
 
     def ver_terapeutas(self):
+        
         terapeutas_df = pd.read_csv(self.informacion_csv)
         print("Listado de Terapeutas Disponibles:")
         print(terapeutas_df)
 
     def ver_pacientes(self):
+        
         pacientes_df = pd.read_csv(self.pacientes_csv)
         print("Listado de Pacientes Registrados:")
         print(pacientes_df)
