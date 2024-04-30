@@ -7,7 +7,6 @@ class TestGuardarPacientes(unittest.TestCase):
     def setUp(self):
         self.clinica = Clinica()
         self.csv_path = 'C:/Users/María José/Documents/U Creativa/Proyecto Final 2.0/Unit_test/pruebas/test_pacientes.csv'
-        # Crear el archivo CSV
         with open(self.csv_path, 'w') as file:
             file.write("Nombre,Apellido,Cedula,Telefono,Correo,Direccion,Terapeuta,Razon,Notas,Fecha,Metodo de Pago\n")
             file.write("Lili,Cortes,1234567890,123456789,lili@gmail.com,Orosi,Dr. Solano,Dolor nervio,Dolor en el nervio de una costilla,2024-05-01,Efectivo\n")
@@ -17,7 +16,6 @@ class TestGuardarPacientes(unittest.TestCase):
         self.assertTrue(os.path.isfile(self.csv_path))
         with open(self.csv_path, 'r') as file:
             csv_data = file.read()
-            # Verificar si la cabecera está presente en el archivo
             self.assertIn("Nombre,Apellido,Cedula,Telefono,Correo,Direccion,Terapeuta,Razon,Notas,Fecha,Metodo de Pago", csv_data)
 
     def test_guardar_pacientes_agregar_datos(self):
@@ -25,7 +23,6 @@ class TestGuardarPacientes(unittest.TestCase):
         self.assertTrue(os.path.isfile(self.csv_path))
         with open(self.csv_path, 'r') as file:
             csv_data = file.read()
-            # Verificar si los datos están presentes en el archivo
             self.assertIn("Lili,Cortes,1234567890,123456789,lili@gmail.com,Orosi,Dr. Solano,Dolor nervio,Dolor en el nervio de una costilla,2024-05-01,Efectivo", csv_data)
 
 if __name__ == '__main__':
