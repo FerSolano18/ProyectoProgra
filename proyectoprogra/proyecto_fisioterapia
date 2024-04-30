@@ -47,7 +47,7 @@ class Clinica:
             'Correo': [input("Ingrese el correo del paciente: ")],
             'Direccion': [input("Ingrese la dirección del paciente: ")],
             'Terapeuta': [input("Ingrese el terapeuta del paciente: ")],
-            'Consulta': [input("Ingrese el tipo de consulta del paciente: ")],
+            'Razon': [input("Ingrese el tipo de consulta del paciente: ")],
             'Notas': [input("Ingrese las notas del paciente: ")],
             'Fecha': [input("Ingrese la fecha de la consulta: ")],
             'Método de Pago': [input("Ingrese el método de pago: ")]

@@ -1,2 +1,2 @@
-Nombre,Apellidos,Cédula,Teléfono,Correo,Fecha,Método de Pago,Dirección,Terapeuta,Razón,Notas
-Maria Fernanda,Solano Barquero,304560898,83287230,mariferage189@gmail.com,20 de abril,Tarjeta,"Paraiso, Cartago",Daniel Jimenez,Nervio ciático,"Paciente se presenta con inflamación en el nervio ciático, se brinda terapia con electrodos y se recetan ejercicios en casa"
+Nombre,Apellidos,Cedula,Telefono,Correo,Dirección,Terapeuta,Razon,Notas,Fecha,Metodo de Pago
+Maria Fernanda,Solano Barquero,304560898,83287230,mariferage189@gmail.com,"Paraiso, Cartago",Daniel Jimenez,Nervio ciatico,La paciente se presenta con dolor de nervio ciatico se le realiza electro terapia y se le recomiendan ejercicios en casa,20 abril 2024,Tarjeta
