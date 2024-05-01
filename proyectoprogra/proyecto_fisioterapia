@@ -1,15 +1,16 @@
 import pandas as pd
+
 # Clase terapeutas
 class TerapeutaDisponible:
-    def __init__(self, Nombre, Apellido, Día, Fecha, Hora, Sede, Especialidad, Tarifa): 
-        self.Nombre = Nombre
-        self.Apellido = Apellido
-        self.Día = Día
-        self.Fecha = Fecha
-        self.Hora = Hora
-        self.Sede = Sede
-        self.Especialidad = Especialidad
-        self.Tarifa = Tarifa  
+    def __init__(self, nombre, apellido, dia, fecha, hora, sede, especialidad, tarifa): 
+        self.nombre = nombre
+        self.apellido = apellido
+        self.dia = dia
+        self.fecha = fecha
+        self.hora = hora
+        self.sede = sede
+        self.especialidad = especialidad
+        self.tarifa = tarifa  
 
 # Clase pacientes
 class Pacientes:
@@ -26,20 +27,34 @@ class Pacientes:
         self.fecha = fecha
         self.metodo_pago = metodo_pago
 
+# Clase clínica
 class Clinica:
     def __init__(self):
-        self.informacion_csv = 'proyectoprogra/informacion.csv'
-        #self.informacion_csv = 'informacion.csv'
-        self.pacientes_csv = 'proyectoprogra/pacientes.csv'
+        self.informacion_csv = 'informacion.csv'
+        self.pacientes_csv = 'pacientes.csv'
         self.terapeutas_disponibles = pd.DataFrame(columns=['Nombre', 'Apellido', 'Día', 'Fecha', 'Hora', 'Sede', 'Especialidad', 'Tarifa'])
-        self.password = 'mypassword'
+        self.password = 'contraseña'
 
     def guardar_terapeutas(self):
         self.terapeutas_disponibles.to_csv(self.informacion_csv, mode='a', index=False, header=False if not pd.read_csv(self.informacion_csv).empty else True)
 
-    def guardar_pacientes(self, datos_paciente):
+    def guardar_pacientes(self):
+        datos_paciente = {
+            'Nombre': [input("Ingrese el nombre del paciente: ")],
+            'Apellidos': [input("Ingrese los apellidos del paciente: ")],
+            'Cedula': [input("Ingrese la cédula del paciente: ")],
+            'Telefono': [input("Ingrese el teléfono del paciente: ")],
+            'Correo': [input("Ingrese el correo del paciente: ")],
+            'Direccion': [input("Ingrese la dirección del paciente: ")],
+            'Terapeuta': [input("Ingrese el terapeuta del paciente: ")],
+            'Razon': [input("Ingrese el tipo de consulta del paciente: ")],
+            'Notas': [input("Ingrese las notas del paciente: ")],
+            'Fecha': [input("Ingrese la fecha de la consulta: ")],
+            'Método de Pago': [input("Ingrese el método de pago: ")]
+        }
         paciente_nuevo = pd.DataFrame(datos_paciente)
-        paciente_nuevo.to_csv(self.pacientes_csv, mode='a', index=False, header=False if not pd.read_csv(self.pacientes_csv).empty else True) 
+        paciente_nuevo.to_csv(self.pacientes_csv, mode='a', index=False, header=False if not pd.read_csv(self.pacientes_csv).empty else True)
+
         print("Datos de paciente ingresados correctamente.")
 
     def ver_terapeutas(self):
@@ -85,20 +100,22 @@ while True:
             nuevo_terapeuta = {
                 'Nombre': nombre,
                 'Apellido': apellido,
-                'Dia': dia,
+                'Día': dia,
                 'Fecha': fecha,
                 'Hora': hora,
                 'Sede': sede,
                 'Especialidad': especialidad,
                 'Tarifa': tarifa
             }
+
             clinica.terapeutas_disponibles = pd.concat([clinica.terapeutas_disponibles, pd.DataFrame([nuevo_terapeuta])], ignore_index=True)
+
             clinica.guardar_terapeutas()
         elif opcion == 3:
             clinica.ver_pacientes()
         elif opcion == 4:
             break
-
+ 
     # Menú para terapeutas
     elif acceso == 2:
         # Solicitar la contraseña
@@ -113,28 +130,14 @@ while True:
             if opcion2 == 1:
                 clinica.ver_pacientes()
             elif opcion2 == 2:
-                datos_paciente = {
-                    'Nombre': [input("Ingrese el nombre del paciente: ")],
-                    'Apellidos': [input("Ingrese los apellidos del paciente: ")],
-                    'Cedula': [input("Ingrese la cédula del paciente: ")],
-                    'Telefono': [input("Ingrese el teléfono del paciente: ")],
-                    'Correo': [input("Ingrese el correo del paciente: ")],
-                    'Direccion': [input("Ingrese la dirección del paciente: ")],
-                    'Terapeuta': [input("Ingrese el terapeuta del paciente: ")],
-                    'Razon': [input("Ingrese el tipo de consulta del paciente: ")],
-                    'Notas': [input("Ingrese las notas del paciente: ")],
-                    'Fecha': [input("Ingrese la fecha de la consulta: ")],
-                    'Metodo de Pago': [input("Ingrese el método de pago: ")]
-               }
-                clinica.guardar_pacientes(datos_paciente)
+                clinica.guardar_pacientes()
             elif opcion2 == 3:
                 break
         else:
             print("Contraseña incorrecta. Acceso denegado.")
-
+ 
     elif acceso == 3:
         break
-
+ 
     else:
         print("Opción inválida. Por favor, seleccione una opción válida.")
-
