@@ -1,5 +1,4 @@
 import pandas as pd
-
 # Clase terapeutas
 class TerapeutaDisponible:
     def __init__(self, Nombre, Apellido, Día, Fecha, Hora, Sede, Especialidad, Tarifa): 
@@ -26,8 +25,6 @@ class Pacientes:
         self.notas = notas
         self.fecha = fecha
         self.metodo_pago = metodo_pago
-
-import pandas as pd
 
 class Clinica:
     def __init__(self):
