@@ -28,8 +28,9 @@ class Pacientes:
 
 class Clinica:
     def __init__(self):
-        self.informacion_csv = 'informacion.csv'
-        self.pacientes_csv = 'pacientes.csv'
+        self.informacion_csv = 'proyectoprogra/informacion.csv'
+        #self.informacion_csv = 'informacion.csv'
+        self.pacientes_csv = 'proyectoprogra/pacientes.csv'
         self.terapeutas_disponibles = pd.DataFrame(columns=['Nombre', 'Apellido', 'Día', 'Fecha', 'Hora', 'Sede', 'Especialidad', 'Tarifa'])
         self.password = 'mypassword'
 
@@ -136,3 +137,4 @@ while True:
 
     else:
         print("Opción inválida. Por favor, seleccione una opción válida.")
+
